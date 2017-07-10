@@ -4,13 +4,17 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Vue JS 2 – Section 2: Lecture 14</title>
+    <title>Vue JS 2 – Section 2: Lecture 15</title>
     <script src="https://unpkg.com/vue@2.3.4"></script>
 </head>
 <body>
     <div id="app">
         <h1 v-once>{{ title }}</h1><!-- Keep initial value of title -->
         <p>{{ sayHello() }} – <a v-bind:href="link">Google</a></p>
+        <hr>
+        <p>{{ finishedLink }}</p><!-- VueJS escapes HTML by default -->
+        <hr>
+        <p v-html="finishedLink"></p><!-- v-html renders HTML -->
     </div>
 
     <script>
@@ -18,7 +22,8 @@
             el: '#app',
             data: {
                 title: 'Hello, World!',
-                link: 'http://www.google.com'
+                link: 'http://www.google.com',
+                finishedLink: '<a href="http://www.google.com">Google</a>'
             },
             methods: {
                 sayHello: function () {
