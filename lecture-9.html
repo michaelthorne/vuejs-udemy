@@ -4,13 +4,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Vue JS 2 – Section 2: Lecture 8</title>
+    <title>Vue JS 2 – Section 2: Lecture 9</title>
     <script src="https://unpkg.com/vue@2.3.4"></script>
 </head>
 <body>
     <div id="app">
-        <input type="text" v-on:input="changeTitle">
-        <p>{{ title }}</p>
+        <p>{{ sayHello() }}</p>
     </div>
 
     <script>
@@ -20,8 +19,8 @@
                 title: 'Hello, World!'
             },
             methods: {
-                changeTitle: function (e) {
-                    this.title = e.target.value;
+                sayHello: function () {
+                    return 'Hello!'; // Anything that can be converted to a String
                 }
             }
         });
