@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Vue JS 2 – Section 2: Lecture 19</title>
+    <title>Vue JS 2 – Section 2: Lecture 20</title>
     <script src="https://unpkg.com/vue@2.4.2"></script>
 </head>
 <body>
@@ -16,6 +16,7 @@
             <!-- – <span v-on:mousemove="dummy">DEAD SPOT</span>-->
             – <span v-on:mousemove.stop="">DEAD SPOT</span>
         </p>
+        <input type="text" v-on:keyup.enter.space="alertMe">
     </div>
 
     <script>
@@ -37,6 +38,9 @@
                 },
                 dummy: function (e) {
                     e.stopPropagation();
+                },
+                alertMe: function (e) {
+                    alert('Alert!');
                 }
             }
         });
