@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Vue JS 2 – Section 2: Lecture 26</title>
+    <title>Vue JS 2 – Section 2: Lecture 27</title>
     <script src="https://unpkg.com/vue@2.4.2"></script>
 
     <style>
@@ -34,7 +34,7 @@
         <div
             class="demo"
             @click="attachRed = !attachRed"
-            :class="{red: attachRed}">
+            :class="divClasses">
         </div>
         <div class="demo" :class="{red: attachRed}"></div>
         <div class="demo"></div>
@@ -45,6 +45,14 @@
             el: '#app',
             data: {
                 attachRed: false
+            },
+            computed: {
+                divClasses: function () {
+                    return {
+                        red: this.attachRed,
+                        blue: !this.attachBlue
+                    }
+                }
             }
         });
     </script>
