@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Vue JS 2 – Section 3: Lecture 43</title>
+    <script src="https://unpkg.com/vue@2.4.2"></script>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="(ingredient, i) in ingredients" v-bind:key="ingredient">{{ ingredient }} ({{ i }})</li><!-- Bind the element to the object -->
+        </ul>
+        <button @click="ingredients.push('herbs')">Add New</button>
+
+        <hr>
+        <ul>
+            <li v-for="person in persons">
+                <div v-for="(value, key, index) in person">({{ index }}) {{ key }}: {{ value }}</div>
+            </li>
+        </ul>
+        <span v-for="n in 10">{{ n }}</span>
+        <hr>
+
+        <template v-for="(ingredient, index) in ingredients">
+            <h1>{{ ingredient }}</h1>
+            <p>{{ index }}</p>
+        </template>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                ingredients: ['meat', 'fruit', 'cookies'],
+                persons: [
+                    {
+                        name: 'Michael', age: 35, color: 'blue'
+                    },
+                    {
+                        name: 'Nossie', age: 34, color: 'green'
+                    }
+                ]
+            }
+        });
+    </script>
+</body>
+</html>
