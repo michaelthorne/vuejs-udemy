@@ -36,9 +36,11 @@
         <!-- 4) Print the following object (only the values) and also create a nested loop for the array: {name: 'TESTOBJECT', data: [1.67, 1.33, 0.98, 2.21]} (hint: use v-for and v-if to achieve this) -->
         <ul>
             <li v-for="(value, key, i) in testData">
-                <div>{{ value }}</div>
-                <div v-for="data in key.data">
-                    <div>{{ data }}</div>
+                <div v-if="key == 'data'">
+                    <span v-for="v in value">({{ v }})</span>
+                </div>
+                <div v-else>
+                    {{ value }}
                 </div>
             </li>
         </ul>
