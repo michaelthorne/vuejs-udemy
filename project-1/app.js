@@ -18,17 +18,26 @@ new Vue({
                 return;
             }
 
-            this.playerHealth -= damage = this.calculateDamage(5, 12); // Random integer between 5 and 12
-            this.checkWin()
+            this.monsterAttacks();
         },
         specialAttack: function () {
+            this.monsterHealth -= this.calculateDamage(10, 20); // Random integer between 10 and 20
 
+            if (this.checkWin()) {
+                return;
+            }
+
+            this.monsterAttacks();
         },
         heal: function () {
 
         },
         giveUp: function () {
 
+        },
+        monsterAttacks: function () {
+            this.playerHealth -= damage = this.calculateDamage(5, 12); // Random integer between 5 and 12
+            this.checkWin();
         },
         calculateDamage: function (min, max) {
             return Math.max(Math.floor(Math.random() * max) + 1, min);
