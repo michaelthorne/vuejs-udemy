@@ -3,16 +3,24 @@ new Vue({
     data: {
         playerHealth: 100,
         monsterHealth: 100,
-        gameIsRunning: false
+        gameIsRunning: false,
+        turns: []
     },
     methods: {
         startGame: function () {
             this.gameIsRunning = true;
             this.playerHealth = 100;
             this.monsterHealth = 100;
+            this.turns = []; // Reset the log
         },
         attack: function () {
-            this.monsterHealth -= this.calculateDamage(3, 10); // Random integer between 3 and 10
+            var damage = this.calculateDamage(3, 10); // Random integer between 3 and 10
+
+            this.monsterHealth -= damage;
+            this.turns.unshift({
+                isPlayer: true,
+                text: 'Player hits Monster for ' + damage
+            });
 
             if (this.checkWin()) {
                 return;
@@ -21,7 +29,12 @@ new Vue({
             this.monsterAttacks();
         },
         specialAttack: function () {
-            this.monsterHealth -= this.calculateDamage(10, 20); // Random integer between 10 and 20
+            var damage = this.calculateDamage(10, 20); // Random integer between 10 and 20
+            this.monsterHealth -= damage;
+            this.turns.unshift({
+                isPlayer: true,
+                text: 'Player hits Monster hard for ' + damage
+            });
 
             if (this.checkWin()) {
                 return;
@@ -30,14 +43,33 @@ new Vue({
             this.monsterAttacks();
         },
         heal: function () {
+            if (this.playerHealth <= 90) {
+                this.playerHealth += 10;
+            }
+            else {
+                this.playerHealth = 100;
+            }
 
+            this.turns.unshift({
+                isPlayer: true,
+                text: 'Player heals for ' + 10
+            });
+
+            this.monsterAttacks();
         },
         giveUp: function () {
-
+            this.gameIsRunning = false;
         },
         monsterAttacks: function () {
-            this.playerHealth -= damage = this.calculateDamage(5, 12); // Random integer between 5 and 12
+            var damage = this.calculateDamage(5, 12); // Random integer between 5 and 12
+
+            this.playerHealth -= damage;
             this.checkWin();
+
+            this.turns.unshift({
+                isPlayer: false,
+                text: 'Monster hits Player for ' + damage
+            });
         },
         calculateDamage: function (min, max) {
             return Math.max(Math.floor(Math.random() * max) + 1, min);
