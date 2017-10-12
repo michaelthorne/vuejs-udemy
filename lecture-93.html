@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Vue JS 2 – Section 7: Lecture 93</title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+    <div id="app">
+        <my-component></my-component>
+        <hr>
+        <my-component></my-component>
+    </div>
+
+    <div id="app2">
+        <my-component></my-component>
+        <hr>
+        <my-component></my-component>
+    </div>
+
+    <script>
+        // Beware of sharing data objects
+        // var data = { status: 'Critical' };
+
+        // Globally registered component
+        // Vue.component('my-component', {});
+
+        // Declare component
+        var component = {
+            data: function () {
+                return {
+                    status: 'Critical'
+                }
+            },
+            template: '<p>Server Status: {{ status }} (<button @click="changeStatus">Change</button>)</p>',
+            methods: {
+                changeStatus: function () {
+                    this.status = 'Normal';
+                }
+            }
+        };
+
+        new Vue({
+            el: '#app',
+            components: {
+                'my-component': component // Locally registered component available in this instance only
+            }
+        });
+
+        new Vue({
+            el: '#app2'
+        });
+    </script>
+</body>
+</html>
