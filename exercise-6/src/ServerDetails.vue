@@ -8,6 +8,8 @@
 
 </script>
 
-<style>
-
+<style scoped>
+    div {
+        border: 1px red solid;
+    }
 </style>

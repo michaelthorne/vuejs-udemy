@@ -14,6 +14,8 @@
 
 </script>
 
-<style>
-
+<style scoped>
+    div {
+        border: 1px blue solid;
+    }
 </style>
