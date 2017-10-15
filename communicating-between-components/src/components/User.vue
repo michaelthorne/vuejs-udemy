@@ -2,10 +2,11 @@
     <div class="component">
         <h1>The User Component</h1>
         <p>I'm an awesome User!</p>
+        <button @click="changeName">Change my Name</button>
         <hr>
         <div class="row">
             <div class="col-xs-12 col-sm-6">
-                <app-user-detail></app-user-detail>
+                <app-user-detail name="Michael"></app-user-detail>
             </div>
             <div class="col-xs-12 col-sm-6">
                 <app-user-edit></app-user-edit>
@@ -22,6 +23,16 @@
         components: {
             appUserDetail: UserDetail,
             appUserEdit: UserEdit
+        },
+        data: function () {
+            return {
+                name: 'Michael'
+            }
+        },
+        methods: {
+            changeName () {
+                this.name = 'Nossie';
+            }
         }
     }
 </script>
