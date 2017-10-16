@@ -6,7 +6,7 @@
         <hr>
         <div class="row">
             <div class="col-xs-12 col-sm-6">
-                <app-user-detail :name="name"></app-user-detail>
+                <app-user-detail :firstName="firstName"></app-user-detail>
             </div>
             <div class="col-xs-12 col-sm-6">
                 <app-user-edit></app-user-edit>
@@ -26,12 +26,12 @@
         },
         data: function () {
             return {
-                name: 'Michael'
+                firstName: 'Michael'
             }
         },
         methods: {
             changeName () {
-                this.name = 'Nossie';
+                this.firstName = 'Nossie';
             }
         }
     }
