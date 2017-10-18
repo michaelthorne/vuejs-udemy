@@ -1,21 +1,19 @@
 <template>
     <div class="col-xs-12 col-sm-6">
         <ul class="list-group">
-            <li
-                class="list-group-item"
-                v-for="server in servers">
-                <app-server :id="server.id" :status="server.status"></app-server>
-            </li>
+            <app-server
+                v-for="server in servers"
+                :server="server"></app-server>
         </ul>
     </div>
 </template>
 
 <script>
-    import Server from '../Server/Server.vue';
+    import Server from './Server.vue';
 
     export default {
         components: {
-            'app-server': Server
+            appServer: Server,
         },
         data: function () {
             return {
