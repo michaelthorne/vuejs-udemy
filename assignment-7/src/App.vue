@@ -3,7 +3,7 @@
         <app-header></app-header>
         <hr>
         <div class="row">
-            <servers></servers>
+            <app-servers></app-servers>
             <app-server-details></app-server-details>
         </div>
         <hr>
@@ -15,12 +15,14 @@
     import Header from './components/Shared/Header.vue';
     import Footer from './components/Shared/Footer.vue';
     import Servers from './components/Server/Servers.vue';
+    import Server from './components/Server/Server.vue';
     import ServerDetails from './components/Server/ServerDetails.vue';
 
     export default {
         components: {
-            appHeader: Header,
-            Servers,
+            'app-header': Header,
+            'app-servers': Servers,
+            'app-server': Server,
             'app-server-details': ServerDetails,
             'app-footer': Footer
         }
