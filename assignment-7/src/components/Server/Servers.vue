@@ -15,7 +15,7 @@
         components: {
             appServer: Server,
         },
-        data: function () {
+        data () {
             return {
                 servers: [
                     {id: 1, status: 'Normal'},

@@ -9,7 +9,7 @@
 
     export default {
         methods: {
-            serverSelected: function () {
+            serverSelected () {
                 serverBus.$emit('serverSelected', this.server)
             }
         },

@@ -3,7 +3,10 @@
         <p v-if="!server">Please select a server</p>
         <p v-else>
             Server #{{ server.id }}: {{ server.status }}
-            <button v-if="server.status != 'Normal'" @click="resetStatus">Change to Normal</button>
+            <template v-if="server.status != 'Normal'">
+                <hr>
+                <button @click="resetStatus">Change to Normal</button>
+            </template>
         </p>
     </div>
 </template>
@@ -12,18 +15,18 @@
     import {serverBus} from '../../main';
 
     export default {
-        data: function () {
+        data () {
             return {
                 server: null
             }
         },
-        created: function () {
+        created () {
             serverBus.$on('serverSelected', (server) => {
                 this.server = server;
             });
         },
         methods: {
-            resetStatus: function () {
+            resetStatus () {
                 this.server.status = 'Normal';
             }
         }
