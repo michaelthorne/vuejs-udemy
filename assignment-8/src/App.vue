@@ -3,13 +3,16 @@
         <div class="row">
             <div class="col-sm">
                 <br>
-                <button class="btn btn-primary">Load Blue Template</button>
-                <button class="btn btn-success">Load Green Template</button>
-                <button class="btn btn-danger">Load Red Template</button>
+                <button @click="selectedComponent = 'appBlue'" class="btn btn-primary">Load Blue Template</button>
+                <button @click="selectedComponent = 'appGreen'" class="btn btn-success">Load Green Template</button>
+                <button @click="selectedComponent = 'appRed'" class="btn btn-danger">Load Red Template</button>
                 <hr>
-                <app-blue></app-blue>
+                <component :is="selectedComponent">
+                    <h2>{{ selectedComponent }}</h2>
+                </component>
+                <!--<app-blue></app-blue>
                 <app-green></app-green>
-                <app-red></app-red>
+                <app-red></app-red>-->
             </div>
         </div>
     </div>
@@ -21,6 +24,11 @@
     import Red from './components/Red.vue';
 
     export default {
+        data () {
+            return {
+                selectedComponent: 'appBlue'
+            }
+        },
         components: {
             appBlue: Blue,
             appGreen: Green,
