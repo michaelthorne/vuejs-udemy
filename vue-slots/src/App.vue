@@ -2,6 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-sm">
+                <br>
                 <button @click="selectedComponent = 'appQuote'">Quote</button>
                 <button @click="selectedComponent = 'appAuthor'">Author</button>
                 <button @click="selectedComponent = 'appNew'">New</button>
