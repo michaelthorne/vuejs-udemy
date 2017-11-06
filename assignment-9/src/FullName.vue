@@ -23,6 +23,11 @@
 
 <script>
     export default {
+        data() {
+            return {
+                processedValue: ''
+            }
+        },
         props: ['value'],
         methods: {
             nameChanged (isFirst, event) {
@@ -33,8 +38,8 @@
                 else {
                     name = this.firstName + ' ' + event.target.value;
                 }
-                this.value = name;
-                this.$emit('input', this.value);
+                this.processedValue = name;
+                this.$emit('input', this.processedValue);
             }
         },
         computed: {

@@ -69,7 +69,7 @@
     export default {
         data () {
             return {
-                fullName: '',
+                fullName: 'Michael Thorne',
                 email: '',
                 password: '',
                 store_data: '',
