@@ -4,24 +4,34 @@
       <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
         <h1>Animations</h1>
         <hr>
+
         <select v-model="alertAnimation" class="form-control">
           <option value="fade">Fade</option>
           <option value="slide">Slide</option>
         </select>
         <br><br>
+
         <button class="btn btn-primary" @click="show = !show">Show Alert</button>
         <br><br>
+
         <transition :name="alertAnimation">
           <div class="alert alert-info" v-show="show">This is some information</div>
         </transition>
+
         <transition name="slide" type="animation" appear>
           <div class="alert alert-info" v-if="show">This is some information</div>
         </transition>
+
         <transition
           enter-active-class="animated bounce"
           leave-active-class="animated shake"
         >
           <div class="alert alert-info" v-if="show">This is some information</div>
+        </transition>
+
+        <transition :name="alertAnimation" mode="out-in">
+          <div class="alert alert-info" v-if="show" key="info">This is some information</div>
+          <div class="alert alert-warning" v-else key="warning">This is a warning</div>
         </transition>
       </div>
     </div>
@@ -33,21 +43,28 @@
     data () {
       return {
         show: true,
-        alertAnimation: 'fade'
+        alertAnimation: 'fade',
       };
     },
   };
 </script>
 
 <style>
-  .fade-enter,
-  .fade-leave {
+  .fade-enter {
     opacity: 0;
   }
 
-  .fade-enter-active,
+  .fade-enter-active {
+    transition: opacity 1s;
+  }
+
+  .fade-leave {
+
+  }
+
   .fade-leave-active {
-    transition: opacity 0.5s;
+    transition: opacity 1s;
+    opacity: 0;
   }
 
   .slide-enter {
@@ -56,7 +73,7 @@
 
   .slide-enter-active {
     animation: slide-in 1s ease-out forwards;
-    transition: opacity 0.5s;
+    transition: opacity .5s;
   }
 
   .slide-leave {
@@ -66,7 +83,7 @@
   .slide-leave-active {
     animation: slide-out 1s ease-out forwards;
     opacity: 0;
-    transition: opacity 3s;
+    transition: opacity 1s;
   }
 
   @keyframes slide-in {
