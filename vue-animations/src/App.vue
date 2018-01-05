@@ -78,8 +78,9 @@
       beforeLeave (el) {
         console.log('beforeLeave');
       },
-      leave (el) {
+      leave (el, done) {
         console.log('leave');
+        done(); // Tell Vue.js when the animation has finished
       },
       afterLeave (el) {
         console.log('afterLeave');
