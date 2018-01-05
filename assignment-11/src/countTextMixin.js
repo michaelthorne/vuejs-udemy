@@ -5,7 +5,7 @@ export const countTextMixin = {
         };
     },
     filters: {
-        countText: function (value) {
+        countText (value) {
             return value + ' (' + value.length + ')';
         }
     },

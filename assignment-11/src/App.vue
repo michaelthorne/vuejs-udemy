@@ -41,10 +41,10 @@
             };
         },
         filters: {
-            reverseText: function (value) {
+            reverseText (value) {
                 return value.split('').reverse().join('');
             },
-            countText: function (value) {
+            countText (value) {
                 return value + ' (' + value.length + ')';
             },
         },
