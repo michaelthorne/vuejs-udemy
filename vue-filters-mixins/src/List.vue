@@ -14,6 +14,9 @@
 
   export default {
     mixins: [fruitMixin],
+    created () {
+      console.log('Inside List Created Hook'); // The component can override changes introduced by the mixin
+    }
   };
 </script>
 
