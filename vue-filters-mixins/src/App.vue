@@ -7,7 +7,7 @@
         <p>{{ text | toUppercase }}</p>
         <p>{{ text | toLowercase }}</p>
         <hr>
-        <h2>Filters with Computed Properties</h2>
+        <h2>Mixin with Computed Properties</h2>
         <input type="text" v-model="filterText">
         <hr>
         <ul>
