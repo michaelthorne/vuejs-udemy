@@ -7,6 +7,7 @@
         <p>{{ text | toUppercase }}</p>
         <p>{{ text | toLowercase }}</p>
         <hr>
+        <button @click="fruits.push('Strawberry')">Add New Item</button>
         <h2>Mixin with Computed Properties</h2>
         <input type="text" v-model="filterText">
         <hr>
