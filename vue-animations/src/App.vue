@@ -24,14 +24,28 @@
 
         <transition
           enter-active-class="animated bounce"
-          leave-active-class="animated shake"
-        >
+          leave-active-class="animated shake">
           <div class="alert alert-info" v-if="show">This is some information</div>
         </transition>
 
         <transition :name="alertAnimation" mode="out-in">
           <div class="alert alert-info" v-if="show" key="info">This is some information</div>
           <div class="alert alert-warning" v-else key="warning">This is a warning</div>
+        </transition>
+
+        <hr>
+        <button class="btn btn-primary" @click="load = !load">Load / Remove Element</button>
+        <br><br>
+        <transition
+          @before-enter="beforeEnter"
+          @enter="enter"
+          @after-enter="afterEnter"
+          @enter-cancelled="enterCancelled"
+          @before-leave="beforeLeave"
+          @leave="leave"
+          @after-leave="afterLeave"
+          @leave-cancelled="leaveCancelled">
+          <div style="background-color: lightgreen; height: 6em; width: 6em" v-if="load"></div>
         </transition>
       </div>
     </div>
@@ -42,9 +56,37 @@
   export default {
     data () {
       return {
-        show: true,
+        load: true,
+        show: false,
         alertAnimation: 'fade',
       };
+    },
+    methods: {
+      beforeEnter (el) {
+        console.log('beforeEnter');
+      },
+      enter (el, done) {
+        console.log('enter');
+        done(); // Tell Vue.js when the animation has finished
+      },
+      afterEnter (el) {
+        console.log('afterEnter');
+      },
+      enterCancelled (el) {
+        console.log('enterCancelled');
+      },
+      beforeLeave (el) {
+        console.log('beforeLeave');
+      },
+      leave (el) {
+        console.log('leave');
+      },
+      afterLeave (el) {
+        console.log('afterLeave');
+      },
+      leaveCancelled (el) {
+        console.log('leaveCancelled');
+      },
     },
   };
 </script>
