@@ -50,7 +50,6 @@
         this.$http.post('', this.user) // URL is stored in `main.js`
           .then(response => {
             console.log(response)
-            this.fetchData()
           }, error => {
             console.log(error)
           })

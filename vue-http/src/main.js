@@ -14,7 +14,14 @@ Vue.http.interceptors.push((request, next) => {
     // request.method = 'PUT'
   }
   next(response => {
-
+    /*
+    response.json = () => {
+      return {
+        // Extract response body and store it in a key with an object
+        messages: response.body
+      }
+    }
+    */
   })
 })
 
