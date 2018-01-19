@@ -1,4 +1,4 @@
-# vue-resource
+# vue-http
 
 > A Vue.js project
 
