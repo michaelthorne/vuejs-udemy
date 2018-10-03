@@ -1,3 +1,4 @@
+import Header from '../components/Header.vue'
 import Home from '../components/Home.vue'
 import User from '../components/user/User.vue'
 import UserDetail from '../components/user/UserDetail'
@@ -7,12 +8,18 @@ import UserStart from '../components/user/UserStart.vue'
 export const routes = [
   {
     path: '',
-    component: Home,
+    components: {
+      default: Home,
+      'header-top': Header
+    },
     name: 'home'
   },
   {
     path: '/user',
-    component: User, children: [
+    components: {
+      default: User,
+      'header-bottom': Header
+    }, children: [
       {
         path: '',
         component: UserStart
@@ -27,5 +34,22 @@ export const routes = [
         name: 'userEdit'
       }
     ]
+  },
+  {
+    path: '/redirect-me',
+    redirect: '/user'
+  },
+  {
+    path: '/redirect-me2',
+    redirect: {
+      name: 'userEdit',
+      params: {
+        'id': 2
+      }
+    }
+  },
+  {
+    path: '*',
+    redirect: '/'
   }
 ]

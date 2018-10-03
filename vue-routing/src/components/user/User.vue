@@ -5,6 +5,7 @@
     <button class="btn btn-secondary" @click="navigateToHome">Go to Home</button>
     <hr>
     <router-view></router-view>
+    <br>
   </div>
 </template>
 
